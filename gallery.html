@@ -605,7 +605,169 @@
 
     
     <main class="container">
-        <div class="about-section"><h2 class="section-title">📸 फोटो गॅलरी</h2><div class="gallery-grid"><div class="gallery-item"><a href="https://gpsite.bizc.in/assets/gp3503215.jpg" target="_blank"><img src="https://gpsite.bizc.in/assets/gp3503215.jpg" loading="lazy"></a></div><div class="gallery-item"><a href="https://gpsite.bizc.in/assets/gp6514939.jpg" target="_blank"><img src="https://gpsite.bizc.in/assets/gp6514939.jpg" loading="lazy"></a></div><div class="gallery-item"><a href="https://gpsite.bizc.in/assets/gp4448336.jpg" target="_blank"><img src="https://gpsite.bizc.in/assets/gp4448336.jpg" loading="lazy"></a></div><div class="gallery-item"><a href="https://gpsite.bizc.in/assets/gp2153642.jpg" target="_blank"><img src="https://gpsite.bizc.in/assets/gp2153642.jpg" loading="lazy"></a></div><div class="gallery-item"><a href="https://gpsite.bizc.in/assets/gp8537433.jpg" target="_blank"><img src="https://gpsite.bizc.in/assets/gp8537433.jpg" loading="lazy"></a></div></div></div>    </main>
+        
+        <style>
+             
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+            .gallery-item {
+                border-radius: 10px; overflow: hidden;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 1px solid #ddd;
+                background: #fff; transition: 0.3s; position: relative;
+                aspect-ratio: 16/9;
+            }
+            .gallery-item:hover { transform: scale(1.02); box-shadow: 0 8px 16px rgba(0,0,0,0.2); cursor: pointer; }
+            .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+            
+             
+            .lightbox-modal {
+                display: none; position: fixed; z-index: 9999; 
+                padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; 
+                overflow: auto; background-color: rgba(0,0,0,0.9);
+            }
+            .lightbox-content {
+                margin: auto; display: block; max-width: 90%; max-height: 80vh;
+                border: 2px solid white; border-radius: 5px;
+                animation: zoom 0.6s;
+            }
+            .lightbox-close {
+                position: absolute; top: 15px; right: 35px;
+                color: #f1f1f1; font-size: 40px; font-weight: bold;
+                transition: 0.3s; cursor: pointer;
+            }
+            .lightbox-close:hover, .lightbox-close:focus { color: #bbb; text-decoration: none; cursor: pointer; }
+            @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
+
+             
+            .gallery-pagination { text-align: center; margin: 20px 0 40px 0; }
+            .g-page-btn {
+                background: white; border: 1px solid #ddd; color: var(--blue);
+                padding: 8px 15px; margin: 0 3px; cursor: pointer; border-radius: 5px;
+            }
+            .g-page-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+            
+             
+            .g-hidden { display: none; }
+        </style><div class="about-section">
+                <h2 class="section-title">📸 फोटो गॅलरी</h2>
+                <div class="gallery-grid"><div class="gallery-item photo-item g-hidden">
+               <img src="https://gpsite.bizc.in/assets/gp3503215.jpg" loading="lazy" onclick="openLightbox(this.src)" alt="Gallery Photo">
+           </div><div class="gallery-item photo-item g-hidden">
+               <img src="https://gpsite.bizc.in/assets/gp6514939.jpg" loading="lazy" onclick="openLightbox(this.src)" alt="Gallery Photo">
+           </div><div class="gallery-item photo-item g-hidden">
+               <img src="https://gpsite.bizc.in/assets/gp4448336.jpg" loading="lazy" onclick="openLightbox(this.src)" alt="Gallery Photo">
+           </div><div class="gallery-item photo-item g-hidden">
+               <img src="https://gpsite.bizc.in/assets/gp2153642.jpg" loading="lazy" onclick="openLightbox(this.src)" alt="Gallery Photo">
+           </div><div class="gallery-item photo-item g-hidden">
+               <img src="https://gpsite.bizc.in/assets/gp8537433.jpg" loading="lazy" onclick="openLightbox(this.src)" alt="Gallery Photo">
+           </div></div>
+                <div id="photo-pagination" class="gallery-pagination"></div>
+            </div><div class="about-section">
+                <h2 class="section-title">🎥 व्हिडिओ गॅलरी</h2>
+                <div class="gallery-grid"><div class="gallery-item video-item g-hidden">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/LbDNa4zgwAM?si=s9nqjW5ZoOoJyHcu" frameborder="0" allowfullscreen></iframe>
+                </div><div class="gallery-item video-item g-hidden">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/h08O4VOY8L8?si=ljJO9W9JylvhL2ZC" frameborder="0" allowfullscreen></iframe>
+                </div><div class="gallery-item video-item g-hidden">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/f4BkWnSBo-o?si=rrAdHx4MpAftrSRX" frameborder="0" allowfullscreen></iframe>
+                </div></div>
+                <div id="video-pagination" class="gallery-pagination"></div>
+            </div>
+        <div id="myLightbox" class="lightbox-modal">
+          <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+          <img class="lightbox-content" id="img01">
+        </div>
+
+        <script>
+            
+            function openLightbox(src) {
+                var modal = document.getElementById("myLightbox");
+                var modalImg = document.getElementById("img01");
+                modal.style.display = "block";
+                modalImg.src = src;
+            }
+            function closeLightbox() {
+                document.getElementById("myLightbox").style.display = "none";
+            }
+            
+            window.onclick = function(event) {
+                var modal = document.getElementById("myLightbox");
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            
+            function initGalleryPagination(itemClass, containerId, perPage) {
+                var items = document.getElementsByClassName(itemClass);
+                var container = document.getElementById(containerId);
+                var total = items.length;
+                var totalPages = Math.ceil(total / perPage);
+                
+                if (total === 0) return;
+                
+                
+                showPage(1);
+
+                function showPage(page) {
+                    var start = (page - 1) * perPage;
+                    var end = start + perPage;
+                    
+                    
+                    for(var i=0; i<total; i++) items[i].style.display = 'none';
+                    
+                    
+                    for(var i=start; i<end && i<total; i++) {
+                        items[i].style.display = 'block';
+                        items[i].classList.add('fade'); 
+                    }
+                    
+                    renderControls(page);
+                }
+
+                function renderControls(currPage) {
+                    if(totalPages <= 1) return;
+                    
+                    var html = '';
+                    
+                    for(var i=1; i<=totalPages; i++) {
+                        var active = (i === currPage) ? 'active' : '';
+                        html += '<button class="g-page-btn '+active+'" onclick="this.parentElement.dataset.curr='+i+'; window.updateGalleryView(\''+itemClass+'\', '+i+', '+perPage+')">'+i+'</button>';
+                    }
+                    container.innerHTML = html;
+                }
+                
+                
+                window.updateGalleryView = function(cls, p, limit) {
+                     var itms = document.getElementsByClassName(cls);
+                     var tot = itms.length;
+                     var start = (p - 1) * limit;
+                     var end = start + limit;
+                     for(var i=0; i<tot; i++) itms[i].style.display = 'none';
+                     for(var i=start; i<end && i<tot; i++) {
+                        itms[i].style.display = 'block';
+                     }
+                     
+                     
+                     var container = document.getElementById(containerId);
+                     var btns = container.getElementsByTagName('button');
+                     for(var b=0; b<btns.length; b++) {
+                         btns[b].classList.remove('active');
+                         if(parseInt(btns[b].innerText) === p) btns[b].classList.add('active');
+                     }
+                }
+            }
+
+            
+            setTimeout(function() {
+                initGalleryPagination('photo-item', 'photo-pagination', 15);
+                initGalleryPagination('video-item', 'video-pagination', 15);
+            }, 500);
+        </script>    </main>
 
     
     <footer class="footer">
