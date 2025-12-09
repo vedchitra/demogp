@@ -61,6 +61,41 @@
             justify-content: space-between;
             align-items: center;
         }
+		
+		 
+
+ 
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+} 
+body {
+    top: 0px !important; 
+}
+
+ 
+.goog-te-gadget-simple {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    font-size: 14px !important;
+    color: white !important;  
+}
+
+ 
+.goog-te-gadget-simple a {
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: bold;
+}
+
+.goog-te-gadget-simple span {
+    color: white !important;
+}
+
+ 
+.goog-te-gadget-icon {
+    display: none !important;
+}
 
         .header-main {
             background: var(--white);
@@ -644,13 +679,16 @@
             <i class="fas fa-phone-alt"></i> आपत्कालीन संपर्क: 
             <strong>112</strong>
         </div>
-        <div>
-            <i class="fas fa-language"></i> मराठी
-            &nbsp;|&nbsp;
-            <a href="#" target="_blank" title="Admin Login" style="color:white;">
-                <i class="fas fa-user-shield"></i>
-            </a>
-        </div>
+        <div style="display:flex; align-items:center;">
+    <i class="fas fa-language" style="margin-right: 5px;"></i>
+    
+    <div id="google_translate_element"></div>
+
+    &nbsp;|&nbsp;
+    <a href="#" target="_blank" title="Admin Login" style="color:white;">
+        <i class="fas fa-user-shield"></i>
+    </a>
+</div>
     </div>
 
     <header class="header-main">
@@ -879,7 +917,7 @@
             <div class="table-responsive">
                 <table class="roles-table">
                     <thead><tr><th>क्र.</th><th>पदनाम / समिती</th><th>भूमिका व जबाबदारी</th></tr></thead>
-                    <tbody><tr><td>1</td><td><strong>सरपंच</strong></td><td>गावाचे मुख्य प्रतिनिधी, ग्रामसभा अध्यक्ष.</td></tr><tr><td>2</td><td><strong>उपसरपंच</strong></td><td>सरपंचांच्या अनुपस्थितीत कार्यभार.</td></tr><tr><td>3</td><td><strong>ग्रामसेवक</strong></td><td>शासकीय योजनांची अंमलबजावणी.</td></tr><tr><td>4</td><td><strong>सदस्य</strong></td><td>वॉर्डातील समस्या मांडणे.</td></tr></tbody>
+                    <tbody><tr><td>1</td><td><strong>सरपंच</strong></td><td>गावाचे मुख्य प्रतिनिधी, ग्रामसभा अध्यक्ष.</td></tr><tr><td>2</td><td><strong>उपसरपंच</strong></td><td>सरपंचांच्या अनुपस्थितीत कार्यभार. </td></tr><tr><td>3</td><td><strong>ग्रामसेवक</strong></td><td>शासकीय योजनांची अंमलबजावणी.</td></tr><tr><td>4</td><td><strong>सदस्य</strong></td><td>वॉर्डातील समस्या मांडणे.</td></tr></tbody>
                 </table>
             </div>
         </div>
@@ -967,6 +1005,19 @@
     </footer>
 
     
+	
+	<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'mr',                // डीफॉल्ट भाषा मराठी
+    includedLanguages: 'mr,hi,en',     // फक्त मराठी, हिंदी, इंग्रजी पर्याय
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+	
 	<script>
     
     function toggleMobileMenu() {
