@@ -680,13 +680,13 @@
             <i class="fas fa-info-circle"></i> आमच्याबद्दल
         </a>
         <a href="services.html" class="">
-            <i class="fas fa-concierge-bell"></i> नागरिक सुविधा
+            <i class="fas fa-user"></i> नागरिक सुविधा
         </a>
         <a href="projects.html" class="">
             <i class="fas fa-hard-hat"></i> विकास कामे
         </a>
         <a href="schemes.html" class="">
-            <i class="fas fa-hand-holding-usd"></i> योजना
+            <i class="fas fa-square-check"></i> योजना
         </a>
         <a href="announcements.html" class="">
             <i class="fas fa-bullhorn"></i> घोषणा
@@ -778,7 +778,7 @@
                         शासकीय योजना                    </h3>
                     <ul style="list-style: none; padding: 0;">
                                                                                     <li style="margin-bottom: 8px;">
-                                    <a href="#" target="_blank" style="color: #bbb; text-decoration: none; transition: 0.3s;">
+                                    <a href="https://www.facebook.com/maharashtra.gramvikasvibhag" target="_blank" style="color: #bbb; text-decoration: none; transition: 0.3s;">
                                         <i class="fas fa-angle-right" style="color: var(--primary); margin-right: 5px;"></i> Maha DBT पोर्टल                                     </a>
                                 </li>
                                                             <li style="margin-bottom: 8px;">
@@ -818,6 +818,32 @@
     </footer>
 
     
+	<script>
+    
+    function toggleMobileMenu() {
+        var nav = document.getElementById("mainNavbar");
+        var btnIcon = document.querySelector(".menu-toggle-btn i");
+        
+        
+        if (nav.classList.contains("show-menu")) {
+            nav.classList.remove("show-menu");
+            
+            btnIcon.classList.remove("fa-times");
+            btnIcon.classList.add("fa-bars");
+        } else {
+            nav.classList.add("show-menu");
+            
+            btnIcon.classList.remove("fa-bars");
+            btnIcon.classList.add("fa-times");
+        }
+    }
+    
+    
+    if(window.innerWidth <= 768) {
+        document.querySelector('.menu-label').style.display = 'block';
+    }
+</script>
+	
     <script>
         
         function moveSlider(input) {
@@ -853,31 +879,6 @@
                 setInterval(nextSlide, 5000); 
             }
         }
-		
-		
-		  
-    function toggleMobileMenu() {
-        var nav = document.getElementById("mainNavbar");
-        var btnIcon = document.querySelector(".menu-toggle-btn i");
-        
-        
-        if (nav.classList.contains("show-menu")) {
-            nav.classList.remove("show-menu");
-            
-            btnIcon.classList.remove("fa-times");
-            btnIcon.classList.add("fa-bars");
-        } else {
-            nav.classList.add("show-menu");
-            
-            btnIcon.classList.remove("fa-bars");
-            btnIcon.classList.add("fa-times");
-        }
-    }
-    
-    
-    if(window.innerWidth <= 768) {
-        document.querySelector('.menu-label').style.display = 'block';
-    }
     </script>
 
 </body>
