@@ -164,12 +164,12 @@ body {
         border: none;
         cursor: pointer;
         padding: 10px;
-        width: 100%;
-        text-align: right;
+        width: auto;  
+         
     }
 
      
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
          
         .nav-wrapper {
             padding: 0 15px;
@@ -860,7 +860,7 @@ body {
                     </div>
                 </div>
         <div class="quick-info-container">
-            <div class="stat-card"><i class="fas fa-users"></i><h3>1207</h3><p>लोकसंख्या</p></div>
+            <div class="stat-card"><i class="fas fa-users"></i><h3>1209</h3><p>लोकसंख्या</p></div>
             <div class="stat-card"><i class="fas fa-home"></i><h3>594</h3><p>एकूण घरे</p></div>
             <div class="stat-card"><i class="fas fa-graduation-cap"></i><h3>89.27</h3><p>साक्षरता दर (%)</p></div>
             <div class="stat-card"><i class="fas fa-map-signs"></i><h3>7</h3><p>प्रभाग संख्या</p></div>
@@ -967,11 +967,75 @@ body {
             }
         </script>
         <div class="about-section bearers-section">
-             <div class="code-conduct-notice text-center" style="background:#fff3cd; color:#856404; padding:10px; border-radius:5px; margin-bottom:20px;">
-                <i class="fas fa-info-circle"></i> सध्या आचारसंहिता लागू असल्याने राजकीय पदाधिकाऱ्यांची माहिती लपवण्यात आली आहे.
-             </div>
-             <h2 class="section-title text-center">प्रशासकीय अधिकारी</h2>
-             <div class="bearer-row">
+            <h2 class="section-title text-center">सन्माननीय नेते</h2>
+            <div class="bearer-row">
+                    <div class="bearer-card">
+                        <div class="photo-box"><img src="https://gpsite.bizc.in/assets/gp3227296.jpg" alt="श्री. देवेंद्र फडणवीस"></div>
+                        <div class="info-box">
+                            <div class="designation">मुख्यमंत्री</div>
+                            <div class="name">श्री. देवेंद्र फडणवीस</div>
+                        </div>
+                    </div>
+                    <div class="bearer-card">
+                        <div class="photo-box"><img src="https://gpsite.bizc.in/assets/gp9171898.jpg" alt="श्री. एकनाथ शिंदे"></div>
+                        <div class="info-box">
+                            <div class="designation">उपमुख्यमंत्री</div>
+                            <div class="name">श्री. एकनाथ शिंदे</div>
+                        </div>
+                    </div>
+                    <div class="bearer-card">
+                        <div class="photo-box"><img src="https://gpsite.bizc.in/assets/gp9712212.png" alt="श्री. अजित पवार"></div>
+                        <div class="info-box">
+                            <div class="designation">उपमुख्यमंत्री</div>
+                            <div class="name">श्री. अजित पवार</div>
+                        </div>
+                    </div></div>
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+            <div class="bearer-tabs-container">
+                <button id="btn_reps" class="bearer-tab-btn" onclick="toggleBearerTab('reps')">
+                    <i class="fas fa-users"></i> लोकप्रतिनिधी
+                </button>
+                <button id="btn_officers" class="bearer-tab-btn" onclick="toggleBearerTab('officers')">
+                    <i class="fas fa-user-tie"></i> प्रशासकीय अधिकारी
+                </button>
+            </div>
+
+            <div id="content_reps" class="bearer-content">
+                <div class="bearer-row">
+                    <div class="bearer-card">
+                        <div class="photo-box"><img src="https://gpsite.bizc.in/assets/gp2299090.png" alt="श्री. जयकुमार गोरे"></div>
+                        <div class="info-box">
+                            <div class="designation">ग्रामविकास मंत्री</div>
+                            <div class="name">श्री. जयकुमार गोरे</div>
+                        </div>
+                    </div>
+                    <div class="bearer-card">
+                        <div class="photo-box"><img src="https://gpsite.bizc.in/assets/gp5756151.jpg" alt="श्री. प्रकाश आबिटकर"></div>
+                        <div class="info-box">
+                            <div class="designation">पालकमंत्री</div>
+                            <div class="name">श्री. प्रकाश आबिटकर</div>
+                        </div>
+                    </div></div>
+                <div class="bearer-row empty-row"></div>
+                <div class="bearer-row">
+                    <div class="bearer-card">
+                        <div class="photo-box"><div class="no-photo"><i class="fas fa-user"></i></div></div>
+                        <div class="info-box">
+                            <div class="designation">सरपंच</div>
+                            <div class="name">-</div>
+                        </div>
+                    </div>
+                    <div class="bearer-card">
+                        <div class="photo-box"><div class="no-photo"><i class="fas fa-user"></i></div></div>
+                        <div class="info-box">
+                            <div class="designation">उपसरपंच</div>
+                            <div class="name">-</div>
+                        </div>
+                    </div></div>
+            </div>
+
+            <div id="content_officers" class="bearer-content">
+                <div class="bearer-row">
                     <div class="bearer-card">
                         <div class="photo-box"><div class="no-photo"><i class="fas fa-user"></i></div></div>
                         <div class="info-box">
@@ -985,7 +1049,8 @@ body {
                             <div class="designation">ZP मुख्य कार्यकारी अधिकारी</div>
                             <div class="name">श्री. कार्तिकेयन एस.</div>
                         </div>
-                    </div></div> <div class="bearer-row">
+                    </div></div>
+                <div class="bearer-row">
                     <div class="bearer-card">
                         <div class="photo-box"><div class="no-photo"><i class="fas fa-user"></i></div></div>
                         <div class="info-box">
@@ -999,18 +1064,20 @@ body {
                             <div class="designation">गटविकास अधिकारी</div>
                             <div class="name">-</div>
                         </div>
-                    </div></div> <div class="bearer-row">
+                    </div></div>
+                <div class="bearer-row">
                     <div class="bearer-card">
                         <div class="photo-box"><div class="no-photo"><i class="fas fa-user"></i></div></div>
                         <div class="info-box">
                             <div class="designation">ग्रामपंचायत अधिकारी</div>
                             <div class="name">-</div>
                         </div>
-                    </div></div></div>
+                    </div></div>
+            </div></div>
         <div class="news-section">
             <div class="news-header"><i class="fas fa-bullhorn"></i> ताज्या बातम्या व अपडेट्स</div>
             <div class="news-content">
-                <ul><li class="news-item"><span class="new-badge">New</span> <strong>ग्रामीण भागातील सर्वसाधारण घटकातील 5 वी ते 12 वी मधील मुलींना सायकल साठी अनुदान निवड यादी </strong> <a href="https://cdnbbsr.s3waas.gov.in/s387fc87983167155bc333219c2abf239f/uploads/2025/06/202506201722562676.pdf" target="_blank" class="news-link">अधिक वाचा &rarr;</a></li><li class="news-item"> <strong>शेतकरी सन्मान योजनेची यादी ग्रामपंचायत कार्यालयात उपलब्ध.</strong> </li><li class="news-item"> <strong>येत्या १५ डिसेंबर रोजी ग्रामसभेचे आयोजन.</strong> </li></ul>
+                <ul><li class="news-item"> <strong>ग्रामीण भागातील सर्वसाधारण घटकातील 5 वी ते 12 वी मधील मुलींना सायकल साठी अनुदान निवड यादी </strong> <a href="https://cdnbbsr.s3waas.gov.in/s387fc87983167155bc333219c2abf239f/uploads/2025/06/202506201722562676.pdf" target="_blank" class="news-link">अधिक वाचा &rarr;</a></li><li class="news-item"><span class="new-badge">New</span> <strong>शेतकरी सन्मान योजनेची यादी ग्रामपंचायत कार्यालयात उपलब्ध.</strong> </li><li class="news-item"> <strong>येत्या १५ डिसेंबर रोजी ग्रामसभेचे आयोजन.</strong> </li></ul>
             </div>
         </div>
         <style>
@@ -1110,6 +1177,50 @@ body {
                     <p>Live Weather &rarr;</p>
                 </div>
             </a>
+            </div>
+        </div>
+        <style>
+            .quote-box {
+                background: linear-gradient(to right, #fff3e0, #ffffff);
+                border-left: 5px solid #FF9933;
+                border-radius: 10px;
+                padding: 25px;
+                margin: 20px 0 40px 0;
+                text-align: center;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+                position: relative;
+            }
+            .quote-icon {
+                font-size: 30px;
+                color: #FF9933;
+                margin-bottom: 10px;
+                opacity: 0.8;
+            }
+            .quote-text {
+                font-size: 20px;
+                font-weight: 700;
+                color: #333;
+                font-family: 'Segoe UI', sans-serif;
+                margin: 10px 0;
+                line-height: 1.5;
+            }
+            .quote-date {
+                font-size: 12px;
+                color: #777;
+                margin-top: 10px;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+        </style>
+        <div class="about-section" style="padding: 0; background: transparent; box-shadow: none;">
+            <div class="quote-box">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <div class="section-title" style="margin: 0 0 15px 0; border: none; padding: 0; font-size: 16px; color: #000080;">
+                    आजचा सुविचार (Good Governance)
+                </div>
+                <div class="quote-text">"ग्रामपंचायत: लोकशाहीचे पहिले मंदिर."</div>
+                <div class="quote-date"><i class="far fa-calendar-alt"></i> ९ डिसेंबर, २०२५</div>
             </div>
         </div>
         <div class="about-section text-center" style="margin-top:20px;">
@@ -1219,8 +1330,8 @@ function googleTranslateElementInit() {
         }
     }
     
-    
-    if(window.innerWidth <= 768) {
+   
+    if(window.innerWidth <= 1024) {
         document.querySelector('.menu-label').style.display = 'block';
     }
 </script>
