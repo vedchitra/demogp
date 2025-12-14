@@ -610,6 +610,49 @@ body {
             cursor: pointer;
         }
         .vid-item iframe { width: 100%; height: 200px; }
+		
+		 
+.custom-img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;  
+    border: 2px dashed #ccc;    
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    min-height: 200px;          
+    color: #666;
+    margin: 10px 0;
+    transition: 0.3s;
+}
+
+.custom-img-placeholder:hover {
+    background-color: #fff3e0;  
+    border-color: #FF9933;
+    color: #d35400;
+}
+
+.custom-img-placeholder i {
+    color: #FF9933;  
+    margin-bottom: 10px;
+    animation: pulse 2s infinite;  
+}
+
+.custom-img-placeholder p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+ 
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
         
          
         .grievance-box {
@@ -670,6 +713,7 @@ body {
             .quick-info-container, .impact-grid, .schemes-links-container, .video-grid, .budget-chart-container, .contact-info-box .contact-grid { grid-template-columns: 1fr; }
             .ba-container { height: 250px; }
         }
+		
     </style>
 </head>
 <body>
@@ -779,7 +823,7 @@ body {
         <div class="about-section text-center whatsapp-section">
             <h2 class="section-title">थेट संपर्क (WhatsApp)</h2>
             <p>तात्काळ माहितीसाठी आम्हाला व्हॉट्सॲपवर मेसेज करा.</p>
-            <a href="https://wa.me/74986638848" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp (74986638848)</a>
+            <a href="https://wa.me/917498663848" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp </a>
         </div>    </main>
 
     
@@ -864,7 +908,39 @@ function googleTranslateElementInit() {
   }, 'google_translate_element');
 }
 </script>
+
+</script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+    
+    document.addEventListener('error', function(e) {
+        
+        if (e.target.tagName.toLowerCase() === 'img') {
+            
+            
+            if(e.target.getAttribute('data-fallback-applied') === 'true') return;
+            e.target.setAttribute('data-fallback-applied', 'true');
+
+            
+            e.target.style.display = 'none';
+
+            
+            var placeholder = document.createElement('div');
+            placeholder.className = 'custom-img-placeholder';
+            
+            
+            placeholder.innerHTML = `
+                <i class="fas fa-image fa-3x"></i>
+                <p>इमेज लवकरच लोड होईल.<br>
+                <span style="font-size:12px; font-weight:normal; color:#888;">कृपया थोड्या वेळाने पेज रिफ्रेश करून बघा.</span></p>
+            `;
+
+            // 4. हा प्लेसहोल्डर मूळ इमेजच्या जागी (त्याच्या खाली) जोडा
+            e.target.parentNode.insertBefore(placeholder, e.target.nextSibling);
+        }
+    }, true); 
+</script>
 	
 	<script>
     
@@ -891,6 +967,8 @@ function googleTranslateElementInit() {
         document.querySelector('.menu-label').style.display = 'block';
     }
 </script>
+
+
 	
     <script>
         
