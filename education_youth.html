@@ -813,7 +813,7 @@ body {
         .footer-grid, 
         .footer h3, 
         .footer ul,
-        .footer-links {  
+        .footer-links { 
             display: none !important; 
         }
         
@@ -822,7 +822,7 @@ body {
         #app-loader { display: flex; } 
 
          
-        .container { 
+        main.container { 
             margin-top: 70px !important; 
             padding: 10px !important; 
             min-height: calc(100vh - 70px); 
@@ -830,29 +830,41 @@ body {
         
          
         .footer { 
-            padding: 15px 10px !important; 
+            padding: 10px !important; 
             margin-top: 0 !important;
             text-align: center !important;
-            background: #222 !important;  
+            background: #222 !important;
             border-top: none !important;
+            height: auto !important;  
+        }
+        
+         
+        .footer .container {
+            min-height: 0 !important;
+            height: auto !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
         
          
         .footer-bottom {
-            border-top: none !important;  
+            border-top: none !important;
             padding-top: 0 !important;
+            margin-top: 0 !important;
         }
         
         .footer p {
-            margin: 5px 0 !important;
-            font-size: 13px !important;
+            margin: 0 !important;  
+            font-size: 12px !important;
             color: #ddd !important;
+            line-height: 1.4;
         }
         
         .developer-credit { 
-            margin-top: 10px !important; 
-            font-size: 11px !important; 
+            margin-top: 5px !important; 
+            font-size: 10px !important; 
             opacity: 0.6; 
+            padding-bottom: 5px;  
         }
     }
 		
@@ -1171,6 +1183,8 @@ function googleTranslateElementInit() {
         
         window.addEventListener('load', function() {
             document.getElementById('app-loader').style.display = 'none';
+            checkHomePageIcon(); 
+            setupDrawerLinks();  
         });
 
         
@@ -1186,32 +1200,34 @@ function googleTranslateElementInit() {
         updateOnlineStatus(); 
 
         
-        
-    function goBack() {
-        
-        var path = window.location.pathname;
-        var page = path.substring(path.lastIndexOf('/') + 1);
+        function checkHomePageIcon() {
+            var path = window.location.pathname;
+            var page = path.substring(path.lastIndexOf('/') + 1);
+            var backBtnIcon = document.querySelector('.app-bar .app-btn i'); 
 
-        
-        if(page === "index.html" || page === "") {
             
-            window.close();
-            
-            
-            
-        } else {
-            
-            history.back();
+            if(page === "index.html" || page === "") {
+                if(backBtnIcon) {
+                    
+                    backBtnIcon.className = "fas fa-home";
+                }
+            } else {
+                
+                if(backBtnIcon) {
+                    backBtnIcon.className = "fas fa-arrow-left";
+                }
+            }
         }
-    }
 
+        
+        
+        
         function toggleDrawer() {
             var drawer = document.getElementById('appDrawer');
             var overlay = document.querySelector('.side-drawer-overlay');
             
             if (drawer.style.right === '0px') {
-                drawer.style.right = '-280px';
-                overlay.style.display = 'none';
+                closeDrawer();
             } else {
                 drawer.style.right = '0px';
                 overlay.style.display = 'block';
@@ -1219,21 +1235,50 @@ function googleTranslateElementInit() {
         }
 
         
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
-            .then(function(reg) {
-                console.log('Service Worker Registered');
-            }).catch(function(err) {
-                console.log('Service Worker Failed', err);
+        function closeDrawer() {
+            var drawer = document.getElementById('appDrawer');
+            var overlay = document.querySelector('.side-drawer-overlay');
+            drawer.style.right = '-280px';
+            overlay.style.display = 'none';
+        }
+
+        
+        
+        function setupDrawerLinks() {
+            var drawerLinks = document.querySelectorAll('.drawer-content a');
+            drawerLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    closeDrawer(); 
+                });
             });
         }
+
         
+        function goBack() {
+            
+            closeDrawer();
+
+            var path = window.location.pathname;
+            var page = path.substring(path.lastIndexOf('/') + 1);
+
+            if(page === "index.html" || page === "") {
+                
+                window.close();
+            } else {
+                
+                history.back();
+            }
+        }
+
+        
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js').catch(console.error);
+        }
         
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            
         });
     </script>
 
