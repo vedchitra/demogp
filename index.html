@@ -787,7 +787,8 @@ body {
     #app-loader {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background: white; z-index: 20000;
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        display: none;  
+        flex-direction: column; align-items: center; justify-content: center;
     }
     .spinner {
         border: 5px solid #f3f3f3; border-top: 5px solid var(--primary);
@@ -812,13 +813,14 @@ body {
         .footer-grid, 
         .footer h3, 
         .footer ul,
-        .footer-links { 
+        .footer-links {  
             display: none !important; 
         }
         
          
         .app-bar { display: flex !important; }
-        
+        #app-loader { display: flex; } 
+
          
         .container { 
             margin-top: 70px !important; 
@@ -828,11 +830,30 @@ body {
         
          
         .footer { 
-            padding: 15px !important; 
+            padding: 15px 10px !important; 
             margin-top: 0 !important;
             text-align: center !important;
+            background: #222 !important;  
+            border-top: none !important;
         }
-        .developer-credit { border: none !important; margin: 0 !important; }
+        
+         
+        .footer-bottom {
+            border-top: none !important;  
+            padding-top: 0 !important;
+        }
+        
+        .footer p {
+            margin: 5px 0 !important;
+            font-size: 13px !important;
+            color: #ddd !important;
+        }
+        
+        .developer-credit { 
+            margin-top: 10px !important; 
+            font-size: 11px !important; 
+            opacity: 0.6; 
+        }
     }
 		
     </style>
@@ -1072,7 +1093,7 @@ body {
             <div class="stat-card"><i class="fas fa-home"></i><h3>553</h3><p>एकूण घरे</p></div>
             <div class="stat-card"><i class="fas fa-graduation-cap"></i><h3>89.27</h3><p>साक्षरता दर (%)</p></div>
             <div class="stat-card"><i class="fas fa-map-signs"></i><h3>9</h3><p>प्रभाग संख्या</p></div>
-            <div class="stat-card"><i class="fas fa-chart-area"></i><h3>269</h3><p>क्षेत्रफळ (Ha)</p></div>
+            <div class="stat-card"><i class="fas fa-chart-area"></i><h3>245</h3><p>क्षेत्रफळ (Ha)</p></div>
             <div class="stat-card"><i class="fas fa-hand-holding-water"></i><h3>5</h3><p>पाण्याचे स्रोत</p></div>
         </div>
         <style>
@@ -1447,14 +1468,18 @@ body {
 
             </div>
 
-            <div style="border-top: 1px solid #444; padding-top: 20px; text-align: center;">
+            <div class="footer-bottom" style="border-top: 1px solid #444; padding-top: 20px; text-align: center;">
+                
                 <p>&copy; 2025 <strong>रामनगर ग्रामपंचायत</strong>. सर्व हक्क राखीव.</p>
-				<div class="footer-links">
-            <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="projects.html">Projects</a> | <a href="schemes.html">Schemes</a> | <a href="contact.html">Contact</a>
-        </div>
-                <div style="margin-top: 10px; font-size: 12px; opacity: 0.7;">
-    Developed under <strong>CM Samruddha Panchayat Abhiyan</strong> | Powered by <a href="https://www.dnyangroup.com/" target="_blank">DnyanGroup</a>
-</div>
+                
+                <div class="footer-links" style="margin: 10px 0;">
+                    <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="projects.html">Projects</a> | <a href="schemes.html">Schemes</a> | <a href="contact.html">Contact</a>
+                </div>
+
+                <div class="developer-credit" style="margin-top: 10px; font-size: 12px; opacity: 0.7;">
+                    Developed under <strong>CM Samruddha Panchayat Abhiyan</strong> | Powered by <a href="https://www.dnyangroup.com/" target="_blank" style="color:var(--primary); text-decoration:none;">DnyanGroup</a>
+                </div>
+
             </div>
         </div>
     </footer>
@@ -1551,13 +1576,24 @@ function googleTranslateElementInit() {
         updateOnlineStatus(); 
 
         
-        function goBack() {
-            if(document.referrer.indexOf(window.location.hostname) !== -1) {
-                history.back();
-            } else {
-                window.location.href = 'index.html';
-            }
+        
+    function goBack() {
+        
+        var path = window.location.pathname;
+        var page = path.substring(path.lastIndexOf('/') + 1);
+
+        
+        if(page === "index.html" || page === "") {
+            
+            window.close();
+            
+            
+            
+        } else {
+            
+            history.back();
         }
+    }
 
         function toggleDrawer() {
             var drawer = document.getElementById('appDrawer');
